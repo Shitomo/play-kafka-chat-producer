@@ -3,3 +3,4 @@
 !/ent/schema/*
 !/ent/generate.go
 wire_gen.go
+main
