@@ -2,7 +2,7 @@ package db
 
 import (
 	"fmt"
-	"github/Shitomo/producer/ent"
+	"github/Shitomo/my-chat/ent"
 	"os"
 
 	_ "github.com/lib/pq"
@@ -30,11 +30,17 @@ func newConfig() config {
 	}
 }
 
-func NewClient() (*ent.Client, error) {
+type Client struct {
+	*ent.Client
+}
+
+func NewClient() (Client, error) {
 	config := newConfig()
 	client, err := ent.Open("postgres", config.dsn())
 	if err != nil {
-		return nil, err
+		return Client{}, err
 	}
-	return client, nil
+	return Client{
+		client,
+	}, nil
 }

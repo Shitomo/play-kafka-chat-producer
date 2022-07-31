@@ -3,10 +3,9 @@ package logger
 import (
 	"context"
 	"fmt"
-	cx "github/Shitomo/producer/driver/context"
+	cx "github/Shitomo/my-chat/driver/context"
+	"github/Shitomo/my-chat/model"
 	"time"
-
-	"github/Shitomo/producer/domain/model"
 
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"

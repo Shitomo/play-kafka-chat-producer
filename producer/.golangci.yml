@@ -92,3 +92,8 @@ issues:
     - path: _test\.go
       linters:
         - funlen
+run:
+  skip-dirs:
+    - design
+    - gen
+    - ent

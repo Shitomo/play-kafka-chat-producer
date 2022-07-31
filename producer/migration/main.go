@@ -2,9 +2,9 @@ package main
 
 import (
 	"context"
-	"github/Shitomo/producer/domain/model"
-	"github/Shitomo/producer/driver/db"
-	"github/Shitomo/producer/driver/logger"
+	"github/Shitomo/my-chat/driver/db"
+	"github/Shitomo/my-chat/driver/logger"
+	"github/Shitomo/my-chat/model"
 
 	_ "github.com/lib/pq"
 )

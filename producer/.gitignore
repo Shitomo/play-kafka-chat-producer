@@ -1,3 +1,4 @@
+/gen
 /ent/*/*
 /ent/*.go
 !/ent/schema/*
