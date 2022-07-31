@@ -2,7 +2,7 @@ export ENV := local
 export PORT := 8080
 
 run:
-	@rm wire_gen.go
+	-@rm wire_gen.go
 	@go generate ./...
 	@go run main.go wire_gen.go
 lint:

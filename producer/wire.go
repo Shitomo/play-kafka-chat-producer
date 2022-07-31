@@ -1,4 +1,3 @@
-//go:generate go run github.com/google/wire/cmd/wire
 //go:build wireinject
 // +build wireinject
 
@@ -7,16 +6,16 @@ package main
 import (
 	"github/Shitomo/producer/adapter/controller"
 	"github/Shitomo/producer/adapter/gateway"
+	"github/Shitomo/producer/adapter/messaging"
 	"github/Shitomo/producer/adapter/presenter"
-	"github/Shitomo/producer/adapter/producer"
 	"github/Shitomo/producer/driver/server"
 	"github/Shitomo/producer/usecase/interactor"
 
 	"github.com/google/wire"
 )
 
-var producerSet = wire.NewSet(
-	producer.NewUserProducer,
+var messagingSet = wire.NewSet(
+	messaging.NewUserProducer,
 )
 
 var gatewaySet = wire.NewSet(
@@ -37,7 +36,7 @@ var controllerSet = wire.NewSet(
 
 func InitializeHTTPServer() *server.HTTPServer {
 	wire.Build(
-		producerSet,
+		messagingSet,
 		gatewaySet,
 		presenterSet,
 		interactorSet,
