@@ -6,7 +6,7 @@ import (
 	"errors"
 	"github/Shitomo/producer/adapter"
 	"github/Shitomo/producer/domain/model"
-	"github/Shitomo/producer/driver/log"
+	"github/Shitomo/producer/driver/logger"
 	"net/http"
 )
 
@@ -31,9 +31,9 @@ func ErrorRender(ctx context.Context, err error) {
 
 	switch {
 	case IsClientError(status):
-		log.WithCtx(ctx).Warn(err.Error())
+		logger.Warn(ctx, err.Error())
 	case IsServerError(status):
-		log.WithCtx(ctx).Error(err.Error())
+		logger.Error(ctx, err.Error())
 	}
 
 	er := ErrorResponse{

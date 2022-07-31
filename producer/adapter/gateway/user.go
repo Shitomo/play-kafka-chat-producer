@@ -4,7 +4,7 @@ import (
 	"context"
 	"github/Shitomo/producer/domain/model"
 	"github/Shitomo/producer/driver/db"
-	logger "github/Shitomo/producer/driver/log"
+	"github/Shitomo/producer/driver/logger"
 	"github/Shitomo/producer/ent"
 	"github/Shitomo/producer/usecase/port"
 	"time"
@@ -17,7 +17,7 @@ type UserGateway struct {
 func NewUserGateway() port.UserRepository {
 	dbClient, err := db.NewClient()
 	if err != nil {
-		logger.Log().Sugar().Fatalf("Fail to create db client. caused by", err)
+		logger.Fatalf(context.Background(), "Fail to create db client. caused by", err)
 	}
 	return UserGateway{
 		dbClient: *dbClient,

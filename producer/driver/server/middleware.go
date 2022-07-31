@@ -1,8 +1,9 @@
 package server
 
 import (
-	"github/Shitomo/producer/driver/context"
-	"github/Shitomo/producer/driver/log"
+	"context"
+	ctx "github/Shitomo/producer/driver/context"
+	"github/Shitomo/producer/driver/logger"
 	"net/http"
 	"os"
 	"time"
@@ -13,7 +14,7 @@ var corsAllowOrigin string
 func InitCors() {
 	corsAllowOrigin = os.Getenv("CORS_ALLOW_ORIGIN")
 	if corsAllowOrigin == "" {
-		log.Log().Warn("cors allow origin is empty")
+		logger.Warn(context.Background(), "cors allow origin is empty")
 	}
 }
 
@@ -26,8 +27,8 @@ func Middleware(next http.Handler) http.Handler {
 		w.Header().Set("Access-Control-Allow-Credentials", "true")
 
 		now := time.Now()
-		r = r.WithContext(context.SetReq(r.Context()))
-		defer log.Access(r.Context(), r.URL.Path, r.Method, now)
+		r = r.WithContext(ctx.SetReq(r.Context()))
+		defer logger.Access(r.Context(), r.URL.Path, r.Method, now)
 
 		if r.Method == "OPTIONS" {
 			w.WriteHeader(http.StatusOK)

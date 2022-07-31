@@ -1,14 +1,15 @@
+//go:generate wire
 package main
 
 import (
+	"context"
 	"github/Shitomo/producer/domain/model"
-	logger "github/Shitomo/producer/driver/log"
+	"github/Shitomo/producer/driver/logger"
 	"os"
 )
 
 func main() {
-	logger.InitLogger()
-	logger.Log().Sugar().Infof("%s server starting...", os.Getenv("ENV"))
+	logger.Infof(context.Background(), "%s server starting...", os.Getenv("ENV"))
 
 	model.LoadEnv("config/")
 	model.LoadLocation()

@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 	"github/Shitomo/producer/domain/model"
 	"github/Shitomo/producer/driver/kafka"
-	logger "github/Shitomo/producer/driver/log"
+	"github/Shitomo/producer/driver/logger"
 	"github/Shitomo/producer/usecase/port"
 	"strconv"
 	"time"
@@ -20,7 +20,7 @@ type UserProducer struct {
 func NewUserProducer() port.UserProducer {
 	producer, err := kafka.NewProducer()
 	if err != nil {
-		logger.Log().Sugar().Fatalf("Fail to create producer. caused by", err)
+		logger.Fatalf(context.Background(), "Fail to create producer. caused by", err)
 	}
 	return UserProducer{
 		asyncProducer: producer,
