@@ -1,11 +1,14 @@
 package main
 
 import (
-	chatapi "/Users/shikimeiasaakira/ws/go/fs-apache-kafka"
-	chat "/Users/shikimeiasaakira/ws/go/fs-apache-kafka/gen/chat"
 	"context"
 	"flag"
 	"fmt"
+	chatapi "github/Shitomo/my-chat"
+	"github/Shitomo/my-chat/adapter/gateway"
+	"github/Shitomo/my-chat/driver/db"
+	chat "github/Shitomo/my-chat/gen/chat"
+	"github/Shitomo/my-chat/model"
 	"log"
 	"net"
 	"net/url"
@@ -16,6 +19,8 @@ import (
 )
 
 func main() {
+	model.LoadEnv("config/")
+
 	// Define command line flags, add any other flag required to configure the
 	// service.
 	var (
@@ -35,12 +40,19 @@ func main() {
 		logger = log.New(os.Stderr, "[chatapi] ", log.Ltime)
 	}
 
+	dbClient, err := db.NewClient()
+	if err != nil {
+		log.Fatal("Failed to connect db. caused by %v", err)
+	}
+
+	messageGateway := gateway.NewMessageGateway(dbClient)
+
 	// Initialize the services.
 	var (
 		chatSvc chat.Service
 	)
 	{
-		chatSvc = chatapi.NewChat(logger)
+		chatSvc = chatapi.NewChat(logger, messageGateway)
 	}
 
 	// Wrap the services in endpoints that can be invoked from other services

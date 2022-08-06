@@ -1,9 +1,9 @@
 package main
 
 import (
-	chat "/Users/shikimeiasaakira/ws/go/fs-apache-kafka/gen/chat"
-	chatsvr "/Users/shikimeiasaakira/ws/go/fs-apache-kafka/gen/http/chat/server"
 	"context"
+	chat "github/Shitomo/my-chat/gen/chat"
+	chatsvr "github/Shitomo/my-chat/gen/http/chat/server"
 	"log"
 	"net/http"
 	"net/url"

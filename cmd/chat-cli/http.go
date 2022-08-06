@@ -1,7 +1,7 @@
 package main
 
 import (
-	cli "/Users/shikimeiasaakira/ws/go/fs-apache-kafka/gen/http/cli/chat"
+	cli "github/Shitomo/my-chat/gen/http/cli/chat"
 	"net/http"
 	"time"
 
