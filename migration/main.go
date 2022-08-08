@@ -10,7 +10,7 @@ import (
 )
 
 func main() {
-	model.LoadEnv("../config/")
+	model.LoadEnv("config/")
 	client, err := db.NewClient()
 	if err != nil {
 		logger.Fatalf(context.Background(), "Failed to create db cient, cause by %s", err)

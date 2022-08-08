@@ -7,6 +7,7 @@ import (
 	chatapi "github/Shitomo/my-chat"
 	"github/Shitomo/my-chat/adapter/gateway"
 	"github/Shitomo/my-chat/driver/db"
+	"github/Shitomo/my-chat/driver/messaging"
 	chat "github/Shitomo/my-chat/gen/chat"
 	"github/Shitomo/my-chat/model"
 	"log"
@@ -47,12 +48,19 @@ func main() {
 
 	messageGateway := gateway.NewMessageGateway(dbClient)
 
+	kafkaProdcer, err := messaging.NewProducer()
+	if err != nil {
+		log.Fatal("Failed to connect kafka. caused by %v", err)
+	}
+
+	realtimeMessageGateway := gateway.NewRealtimeMessageGateway(kafkaProdcer)
+
 	// Initialize the services.
 	var (
 		chatSvc chat.Service
 	)
 	{
-		chatSvc = chatapi.NewChat(logger, messageGateway)
+		chatSvc = chatapi.NewChat(logger, messageGateway, realtimeMessageGateway)
 	}
 
 	// Wrap the services in endpoints that can be invoked from other services
