@@ -2,14 +2,15 @@ package main
 
 import (
 	"context"
-	chat "github/Shitomo/my-chat/gen/chat"
-	chatsvr "github/Shitomo/my-chat/gen/http/chat/server"
 	"log"
 	"net/http"
 	"net/url"
 	"os"
 	"sync"
 	"time"
+
+	chat "github.com/Shitomo/play-kafka-chat-producer/gen/chat"
+	chatsvr "github.com/Shitomo/play-kafka-chat-producer/gen/http/chat/server"
 
 	goahttp "goa.design/goa/v3/http"
 	httpmdlwr "goa.design/goa/v3/http/middleware"

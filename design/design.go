@@ -1,4 +1,4 @@
-//go:generate goa gen  github/Shitomo/my-chat/design --output ../
+//go:generate goa gen  github.com/Shitomo/play-kafka-chat-producer/design --output ../
 package design
 
 import (

@@ -1,9 +1,10 @@
 package main
 
 import (
-	cli "github/Shitomo/my-chat/gen/http/cli/chat"
 	"net/http"
 	"time"
+
+	cli "github.com/Shitomo/play-kafka-chat-producer/gen/http/cli/chat"
 
 	goahttp "goa.design/goa/v3/http"
 	goa "goa.design/goa/v3/pkg"

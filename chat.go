@@ -2,11 +2,13 @@ package chatapi
 
 import (
 	"context"
-	"github/Shitomo/my-chat/adapter/gateway"
-	"github/Shitomo/my-chat/driver/logger"
-	chat "github/Shitomo/my-chat/gen/chat"
-	"github/Shitomo/my-chat/model"
 	"log"
+
+	chat "github.com/Shitomo/play-kafka-chat-producer/gen/chat"
+
+	"github.com/Shitomo/play-kafka-chat-core/adapter/gateway"
+	"github.com/Shitomo/play-kafka-chat-core/driver/logger"
+	"github.com/Shitomo/play-kafka-chat-core/model"
 )
 
 // chat service example implementation.

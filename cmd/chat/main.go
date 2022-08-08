@@ -4,12 +4,6 @@ import (
 	"context"
 	"flag"
 	"fmt"
-	chatapi "github/Shitomo/my-chat"
-	"github/Shitomo/my-chat/adapter/gateway"
-	"github/Shitomo/my-chat/driver/db"
-	"github/Shitomo/my-chat/driver/messaging"
-	chat "github/Shitomo/my-chat/gen/chat"
-	"github/Shitomo/my-chat/model"
 	"log"
 	"net"
 	"net/url"
@@ -17,6 +11,14 @@ import (
 	"os/signal"
 	"sync"
 	"syscall"
+
+	chatapi "github.com/Shitomo/play-kafka-chat-producer"
+	chat "github.com/Shitomo/play-kafka-chat-producer/gen/chat"
+
+	"github.com/Shitomo/play-kafka-chat-core/adapter/gateway"
+	"github.com/Shitomo/play-kafka-chat-core/driver/db"
+	"github.com/Shitomo/play-kafka-chat-core/driver/messaging"
+	"github.com/Shitomo/play-kafka-chat-core/model"
 )
 
 func main() {

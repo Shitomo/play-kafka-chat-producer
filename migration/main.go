@@ -2,9 +2,10 @@ package main
 
 import (
 	"context"
-	"github/Shitomo/my-chat/driver/db"
-	"github/Shitomo/my-chat/driver/logger"
-	"github/Shitomo/my-chat/model"
+
+	"github.com/Shitomo/play-kafka-chat-core/driver/db"
+	"github.com/Shitomo/play-kafka-chat-core/driver/logger"
+	"github.com/Shitomo/play-kafka-chat-core/model"
 
 	_ "github.com/lib/pq"
 )
