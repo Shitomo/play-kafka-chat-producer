@@ -1,10 +1,10 @@
-name: info-workflow
+name: build-workflow
 
 on:
   push:
     branches:
-      - develop
-      - master
+      - "develop"
+      - "master"
 
 jobs:
   build:
