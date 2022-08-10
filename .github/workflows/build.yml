@@ -33,4 +33,3 @@ jobs:
           IMAGE_TAG=v`date +%Y%m%d%H%M%S`
           echo "::set-output name=image_tag::${IMAGE_TAG}"
           KO_DOCKER_REPO=$DOCKERHUB_REPO ko build ./ --sbom=none --bare --tags=${IMAGE_TAG} --platform=all
-        working-directory: ./info
