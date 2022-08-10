@@ -9,7 +9,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    if: github.event.pull_request.merged == true
     env:
       DOCKERHUB_REPO: shitomo/play-kafka-consumer
       DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
