@@ -3,7 +3,7 @@ defaultBaseImage: gcr.io/distroless/static:nonroot
 builds:
   - id: main
     dir: .
-    main: .
+    main: ./cmd/chat/main.go
     env:
       - CGO_ENABLED=0
     ldflags:
