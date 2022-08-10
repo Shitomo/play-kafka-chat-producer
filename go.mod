@@ -3,7 +3,7 @@ module github.com/Shitomo/play-kafka-chat-producer
 go 1.18
 
 require (
-	github.com/Shitomo/play-kafka-chat-core v0.0.4
+	github.com/Shitomo/play-kafka-chat-core v0.0.8
 	github.com/lib/pq v1.10.6
 	goa.design/goa/v3 v3.7.13
 )

@@ -14,15 +14,15 @@ import (
 // chat service example implementation.
 // The example methods log the requests and return zero values.
 type chatsrvc struct {
-	messageGateway         gateway.MessageGateway
-	realtimeMessageGateway gateway.RealtimeMessageGateway
+	messageGateway          gateway.MessageGateway
+	realtimeMessageProducer gateway.RealtimeMessagePublisher
 }
 
 // NewChat returns the chat service implementation.
-func NewChat(logger *log.Logger, messageGateway gateway.MessageGateway, realtimeMessageGateway gateway.RealtimeMessageGateway) chat.Service {
+func NewChat(logger *log.Logger, messageGateway gateway.MessageGateway, realtimeMessageProducer gateway.RealtimeMessagePublisher) chat.Service {
 	return &chatsrvc{
-		messageGateway:         messageGateway,
-		realtimeMessageGateway: realtimeMessageGateway,
+		messageGateway:          messageGateway,
+		realtimeMessageProducer: realtimeMessageProducer,
 	}
 }
 
@@ -35,7 +35,7 @@ func (s *chatsrvc) SendMessage(ctx context.Context, p *chat.SendMessageRequestBo
 		logger.Errorf(ctx, "Failed to save message. caused by %v", err)
 		return nil, err
 	}
-	err = s.realtimeMessageGateway.Produce(ctx, message)
+	err = s.realtimeMessageProducer.Produce(ctx, message)
 	if err != nil {
 		logger.Errorf(ctx, "Failed to produce message to realtime message server. caused by %v", err)
 		return nil, err

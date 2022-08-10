@@ -55,7 +55,7 @@ func main() {
 		log.Fatal("Failed to connect kafka. caused by %v", err)
 	}
 
-	realtimeMessageGateway := gateway.NewRealtimeMessageGateway(kafkaProdcer)
+	realtimeMessageGateway := gateway.NewRealtimeMessagePublisher(kafkaProdcer)
 
 	// Initialize the services.
 	var (
