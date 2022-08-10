@@ -23,6 +23,8 @@ jobs:
         uses: actions/setup-go@v3
         with:
           go-version: 1.19
+      - name: install Goa
+        run: go install goa.design/goa/v3/cmd/goa@v3
       - name: go generate
         run: go generate ./...
       - name: Install ko
