@@ -23,6 +23,8 @@ jobs:
         uses: actions/setup-go@v3
         with:
           go-version: 1.19
+      - name: go generate
+        run: go generate ./...
       - name: Install ko
         run: go install github.com/google/ko@latest
       - name: ko login
