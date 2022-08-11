@@ -22,7 +22,10 @@ import (
 )
 
 func main() {
-	model.LoadEnv("config/")
+	env := os.Getenv("ENV")
+	if env == "local" {
+		model.LoadEnv("config/")
+	}
 
 	// Define command line flags, add any other flag required to configure the
 	// service.
